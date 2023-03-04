@@ -74,9 +74,29 @@ const save = async (content, dest) => {
   }
 }
 
+const getFileName = (link) => {
+  try {
+    let url = new URL(link);
+    return path.basename(url.pathname);
+  } catch (e) {
+    console.log(e.message, link)
+  }
+}
+
+const getPathName = (link) => {
+  try {
+    let url = new URL(link);
+    return url.pathname
+  } catch (e) {
+    console.log(e.message, link)
+  }
+}
+
 module.exports = {
   save,
   download,
   isPathUrl,
-  isPathFile
+  isPathFile,
+  getFileName,
+  getPathName
 }
